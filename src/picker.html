@@ -1,0 +1,44 @@
+<ul style="list-style: none; display: inline-block;">
+    <li><button onclick="option(0);">Input</button></li>
+    <li><button onclick="option(1);">Output</button></li>
+    <li><button onclick="option(2);">Network</button></li>
+    <li><button onclick="option(3);">Action</button></li>
+    </ul>
+    <nav>
+    <ul style="list-style: none; display: inline-block;" id="opti">
+
+        </ul>
+        </nav>
+        <style>
+            nav{
+                display: inline-block;
+            }
+            nav ul{height:600px; width:100%;}
+nav ul{overflow:hidden; overflow-y:scroll;}
+button{
+  background-color: wheat; /* Green */
+  color: white;
+width: 400px;
+height: 180px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+    </style>
+    <script>
+        function option(opt){
+if(opt == 0){
+    document.getElementById("opti").innerHTML = "<li><button>Camera</button></li><li><button>Image</button></li><li><button>Text</button></li><li><button>Audio</button></li><li><button>Folder</button></li>"
+}
+if(opt == 1){
+    document.getElementById("opti").innerHTML = "<li><button>Image</button></li><li><button>Text</button></li><li><button>Audio</button></li>"
+}
+if(opt == 2){
+    document.getElementById("opti").innerHTML = "<li><button>Convolutional neural network</button></li>"
+}
+if(opt == 3){
+    document.getElementById("opti").innerHTML = "<li><button>Execute Javascript</button></li><li><button>Tokenize words</button></li><li><button>Grayscale image</button></li>"
+}
+}
+    </script>
