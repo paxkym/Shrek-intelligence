@@ -1,15 +1,13 @@
 var tabs = []
 // Start of interface
-document.getElementById("0").style.position = "absolute"
-const box = document.getElementById("0")
 var c = document.getElementById("screen")
 var ctx = c.getContext("2d")
+var box;
 ctx.strokeStyle = 'red'
 ctx.lineWidth = 5
 c.height = screen.availHeight
 c.width = screen.availWidth
 ctx.beginPath()
-box.draggable = false
 var down = false
 var clicked =  null
 var firstx = 0
@@ -18,10 +16,6 @@ var firstxn = 0
 var firstyn = 0
 var control = false
 var keyp = null
-document.getElementById('0iD0').addEventListener('click', function(event){
-  control = true
-  console.log('e')
-    })
     document.addEventListener('mousedown', function(event){
       if(control){
         firstyn = event.clientY
@@ -33,16 +27,7 @@ document.getElementById('0iD0').addEventListener('click', function(event){
             control = false
           }
             })
-document.getElementById('0').addEventListener('mouseup', function(event){
-down = false
-ctx.clearRect(0, 0, c.width, c.height)
-  })
-  document.getElementById('0').addEventListener('mousedown', function(event){
-      firsty = (event.clientY)-(box.style.top.split('p')[0])
-      firstx = (event.clientX)-(box.style.left.split('p')[0])
-    console.log(firstx, firsty, event.clientX, event.clientY, box.style.left, box.style.top)
-down = true
-  });
+
   document.addEventListener('mousemove', function(event) {
     if(down){
       if(control){
@@ -57,4 +42,33 @@ down = true
       }
     }
   });
+function addBlock(){
+  tabs.push([])
+  const added = tabs.length-1
+  const core = '<img draggable="false" src="http://letsrunmoore.com/wp-content/uploads/2015/06/coconut.jpg" width="300"/>'
+  const doc =   '  <div id="' + added + '"draggable="false" style="border-style: solid;border-radius: 5px; display: inline-block;"><div draggable="false" id="' + added + 'iD1"style="width:10px;height:10px;border:1px solid #0000ED;"></div><div id="' + added + 'oD1" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div>' + core + '      <div height="10" width="10" style="border-style: solid;"></div><div id="' + added + 'iD0" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;"></div>          <div id="' + added + 'oD0" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div></div>'
+  console.log(doc, added, document.getElementById(String(added)))
+  document += doc
+  document.getElementById(String(added)).style.position = "absolute"
+   box = document.getElementById(String(added))
+   document.getElementById(String(added)).draggable = false
+  document.getElementById(String(added)).addEventListener('mouseup', function(event){
+down = false
+ctx.clearRect(0, 0, c.width, c.height)
+  })
+  document.getElementById(added).addEventListener('mousedown', function(event){
+console.log(EventSource)
+    box = document.getElementById('0')
+      firsty = (event.clientY)-(box.style.top.split('p')[0])
+      firstx = (event.clientX)-(box.style.left.split('p')[0])
+    console.log(firstx, firsty, event.clientX, event.clientY, box.style.left, box.style.top, box)
+down = true
+  });
+  document.getElementById(added + 'iD0').addEventListener('click', function(event){
+  control = true
+  console.log('e')
+    })
+}
+addBlock()
+addBlock()
 // End of interface
