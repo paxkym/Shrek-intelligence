@@ -61,7 +61,6 @@ function addBlock(){
   box.right = 100
   down = false
   box = null
-  firstx = 
 }
 function addlisteners(tab){
     box = document.getElementById(String(parseInt(String(tab))));
