@@ -15,6 +15,8 @@ var firsty = 0
 var firstxn = 0
 var firstyn = 0
 var control = false
+var mousex = 0
+var mousey = 0
 var keyp = null
     document.addEventListener('mousedown', function(event){
       if(control){
@@ -29,6 +31,8 @@ var keyp = null
             })
 
   document.addEventListener('mousemove', function(event) {
+    mousex = event.clientX
+ mousey = event.clientY
     if(down){
       if(control){
       ctx.clearRect(0, 0, c.width, c.height);
@@ -56,12 +60,16 @@ function addBlock(){
   const box1 = document.getElementById(String(added))
     box = document.getElementById(String(parseInt(String(box1.id))));
    box.draggable = false
-  addlisteners(added)
-  box.top = 100
-  box.right = 100
   down = false
-  box = null
+  addlisteners(added)
+  box = this
+console.log(box.id)
+      firsty = (event.clientY)-(box.style.top.split('p')[0])
+      firstx = (event.clientX)-(box.style.left.split('p')[0])
+    console.log(firstx, firsty, event.clientX, event.clientY, box.style.left, box.style.top, box)
+down = true
 }
+console.log(object);
 function addlisteners(tab){
     box = document.getElementById(String(parseInt(String(tab))));
     box.addEventListener('mouseup', function(){
@@ -78,10 +86,10 @@ console.log(box.id)
 down = true
   })
   console.log('listen', document.getElementById(tab))
-  document.getElementById(tab + 'iD0').addEventListener('click', function(event){
-  control = true
-  console.log('e')
-    })
+  // document.getElementById(tab + 'iD0').addEventListener('click', function(event){
+  // control = true
+  // console.log('e')
+  //   })
 }
 // End of interface
 
