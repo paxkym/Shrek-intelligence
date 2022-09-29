@@ -2,7 +2,7 @@
     <li><button onclick="option(0);">Input</button></li>
     <li><button onclick="option(1);">Output</button></li>
     <li><button onclick="option(2);">Network</button></li>
-    <li><button onclick="option(3);">Action</button></li>
+    <li><button onclick="option(3);addBlock(1,1);">Action</button></li>
     </ul>
     <nav>
     <ul style="list-style: none; display: inline-block;" id="opti">
@@ -29,7 +29,7 @@ height: 180px;
     <script>
         function option(opt){
 if(opt == 0){
-    document.getElementById("opti").innerHTML = "<li><button>Camera</button></li><li><button>Image</button></li><li><button>Text</button></li><li><button>Audio</button></li><li><button>Folder</button></li>"
+    document.getElementById("opti").innerHTML = "<li><button>Camera</button></li><li><button>Image</button></li><li><button>Text</button></li><li><button>Audio</button></li><li><button>Folder</button></li><li><button>Canvas</button></li>"
 }
 if(opt == 1){
     document.getElementById("opti").innerHTML = "<li><button>Image</button></li><li><button>Text</button></li><li><button>Audio</button></li>"
@@ -41,4 +41,4 @@ if(opt == 3){
     document.getElementById("opti").innerHTML = "<li><button>Execute Javascript</button></li><li><button>Tokenize words</button></li><li><button>Grayscale image</button></li>"
 }
 }
-    </script>
+</script>

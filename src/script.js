@@ -49,10 +49,21 @@ var keyp = null
   addBlock()
   addBlock()
   addBlock()
-function addBlock(){
+function addBlock(type, subtype){
   //Backend
-  tabs.push([[]])
+  var prototype = [type, subtype, []]
+  if(type == 0){
+    if(subtype == 0){
 
+    }
+  }else if(type == 1){
+
+    }else if(type == 2){
+
+      }else if(type == 3){
+
+        }
+        tabs.push(prototype)
   // Frontend
   const added = tabs.length-1
   const core = '<img draggable="false" src="http://letsrunmoore.com/wp-content/uploads/2015/06/coconut.jpg" width="300"/>'
