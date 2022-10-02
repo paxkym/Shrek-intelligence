@@ -8,6 +8,9 @@ ctx.lineWidth = 5
 c.height = screen.availHeight
 c.width = screen.availWidth
 ctx.beginPath()
+ctx.moveTo(0,0)
+ctx.lineTo(500, 500)
+ctx.stroke()
 var down = false
 var clicked =  null
 var firstx = 0
@@ -40,15 +43,22 @@ var keyp = null
       ctx.moveTo(firstxn,firstyn)
       ctx.lineTo(event.clientX, event.clientY)
       ctx.stroke()
+          console.log('e2')
       }else{
     box.style.top = (event.clientY-(firsty)) + 'px'
     box.style.left = (event.clientX-(firstx)) + 'px'
       }
     }
   });
-  addBlock()
-  addBlock()
-  addBlock()
+
+  function add(){
+    ctx.beginPath()
+ctx.moveTo(0,0)
+ctx.lineTo(500, 500)
+ctx.stroke()
+console.log(c)
+
+  }
 function addBlock(type, subtype){
   //Backend
   var prototype = [type, subtype, []]
@@ -68,7 +78,7 @@ function addBlock(type, subtype){
   const added = tabs.length-1
   const core = '<img draggable="false" src="http://letsrunmoore.com/wp-content/uploads/2015/06/coconut.jpg" width="300"/>'
   const doc =   '  <div onclick= "addlisteners(this.id)" id="' + added + '"draggable="false" style="border-style: solid;border-radius: 5px; display: inline-block;"><div draggable="false" id="' + added + 'iD1"style="width:10px;height:10px;border:1px solid #0000ED;"></div><div id="' + added + 'oD1" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div>' + core + '      <div height="10" width="10" style="border-style: solid;"></div><div id="' + added + 'iD0" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;"></div><div id="' + added + 'oD0" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div></div>'
-  document.body.innerHTML += doc
+  document.getElementById('tabs').innerHTML += doc
   console.log(document.getElementById(String(added)), String(added), document.getElementById('1'), tabs)
   document.getElementById(String(added)).style.position = "absolute"
   const box1 = document.getElementById(String(added))
@@ -85,28 +95,34 @@ firstx = (mousex)-(box.style.left.split('p')[0])
 }
 
 function addlisteners(tab){
+  const added = tabs.length-1
     box = document.getElementById(String(parseInt(String(tab))));
     box.addEventListener('mouseup', function(){
-      ctx.clearRect(0, 0, c.width, c.height)
 down = false
   })
-  console.log('listen2', document.getElementById(tab))
+  box.getElementById(String(added) + "oD1").addEventListener('mouseup', function(){
+    if(control){
+      console.log(box.id)
+      }
+  })
   box.addEventListener('mousedown', function(event){
+    if(!control){
 box = this
 console.log(box.id)
       firsty = (event.clientY)-(box.style.top.split('p')[0])
       firstx = (event.clientX)-(box.style.left.split('p')[0])
     console.log(firstx, firsty, event.clientX, event.clientY, box.style.left, box.style.top, box)
-down = true
+    }else{
+      
+    }
+    down = true
   })
-  console.log('listen', document.getElementById(tab))
   document.getElementById(tab + 'iD0').addEventListener('click', function(event){
   control = true
   console.log('e')
     })
 }
 // End of interface
-
 
 
 
