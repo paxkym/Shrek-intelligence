@@ -21,6 +21,8 @@ var control = false
 var mousex = 0
 var mousey = 0
 var keyp = null
+const offsetx = 0
+const offsety = 0
     document.addEventListener('mousedown', function(event){
       if(control){
         firstyn = event.clientY
@@ -40,8 +42,8 @@ var keyp = null
       if(control){
       ctx.clearRect(0, 0, c.width, c.height)
       ctx.beginPath()
-      ctx.moveTo(firstxn,firstyn)
-      ctx.lineTo(event.clientX, event.clientY)
+      ctx.moveTo(firstxn -offsetx,firstyn -offsety)
+      ctx.lineTo(event.clientX -offsetx, event.clientY -offsety)
       ctx.stroke()
           console.log('e2')
       }else{
@@ -100,9 +102,10 @@ function addlisteners(tab){
     box.addEventListener('mouseup', function(){
 down = false
   })
-  box.getElementById(String(added) + "oD1").addEventListener('mouseup', function(){
+  console.log(document.getElementById(String(added) + "oD1"), String(added) + "oD1")
+  document.getElementById(String(added) + "oD1").addEventListener('mouseup', function(){
     if(control){
-      console.log(box.id)
+      console.log(box.id, "connected to", this.parentElement.id)
       }
   })
   box.addEventListener('mousedown', function(event){
