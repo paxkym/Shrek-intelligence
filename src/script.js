@@ -22,7 +22,7 @@ var mousex = 0
 var mousey = 0
 var keyp = null
 const offsetx = 0
-const offsety = 0
+const offsety = 30
     document.addEventListener('mousedown', function(event){
       if(control){
         firstyn = event.clientY
@@ -79,7 +79,7 @@ function addBlock(type, subtype){
   // Frontend
   const added = tabs.length-1
   const core = '<img draggable="false" src="http://letsrunmoore.com/wp-content/uploads/2015/06/coconut.jpg" width="300"/>'
-  const doc =   '  <div onclick= "addlisteners(this.id)" id="' + added + '"draggable="false" style="border-style: solid;border-radius: 5px; display: inline-block;"><div draggable="false" id="' + added + 'iD1"style="width:10px;height:10px;border:1px solid #0000ED;"></div><div id="' + added + 'oD1" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div>' + core + '      <div height="10" width="10" style="border-style: solid;"></div><div id="' + added + 'iD0" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;"></div><div id="' + added + 'oD0" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div></div>'
+  const doc =   '  <div onclick= "addlisteners(this.id)" id="' + added + '"draggable="false" style="border-style: solid;border-radius: 5px; display: inline-block;">' + core + '<div height="10" width="10" style="border-style: solid;"></div><div id="' + added + 'i" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;"></div><div id="' + added + 'o" draggable="false" style="width:10px;height:10px;border:1px solid #0000ED;margin-left: 300px;margin-top: -12px;"></div></div>'
   document.getElementById('tabs').innerHTML += doc
   console.log(document.getElementById(String(added)), String(added), document.getElementById('1'), tabs)
   document.getElementById(String(added)).style.position = "absolute"
@@ -102,10 +102,15 @@ function addlisteners(tab){
     box.addEventListener('mouseup', function(){
 down = false
   })
-  console.log(document.getElementById(String(added) + "oD1"), String(added) + "oD1")
-  document.getElementById(String(added) + "oD1").addEventListener('mouseup', function(){
+  console.log(document.getElementById(String(added) + "o"), String(added) + "o")
+  document.getElementById(String(added) + "o").addEventListener('mouseup', function(){
     if(control){
-      console.log(box.id, "connected to", this.parentElement.id)
+      alert(box.id + " connected to " + this.parentElement.id)
+      }
+  })
+  document.getElementById(String(added) + "i").addEventListener('mouseup', function(){
+    if(control){
+      alert(box.parentElement.id + " connected to " + this.parentElement.id)
       }
   })
   box.addEventListener('mousedown', function(event){
@@ -120,10 +125,14 @@ console.log(box.id)
     }
     down = true
   })
-  document.getElementById(tab + 'iD0').addEventListener('click', function(event){
+  document.getElementById(tab + 'i').addEventListener('click', function(event){
   control = true
   console.log('e')
     })
+    document.getElementById(tab + 'o').addEventListener('click', function(event){
+      control = true
+      console.log('e')
+        })
 }
 // End of interface
 
