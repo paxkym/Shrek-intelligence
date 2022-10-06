@@ -21,8 +21,12 @@ var control = false
 var mousex = 0
 var mousey = 0
 var keyp = null
+var on = [false, null ];
 const offsetx = 0
 const offsety = 30
+function state(input){
+  document.getElementById('state').innerHTML = input
+}
     document.addEventListener('mousedown', function(event){
       if(control){
         firstyn = event.clientY
@@ -38,6 +42,7 @@ const offsety = 30
   document.addEventListener('mousemove', function(event) {
     mousex = event.clientX
  mousey = event.clientY
+ state(control)
     if(down){
       if(control){
       ctx.clearRect(0, 0, c.width, c.height)
@@ -53,14 +58,7 @@ const offsety = 30
     }
   });
 
-  function add(){
-    ctx.beginPath()
-ctx.moveTo(0,0)
-ctx.lineTo(500, 500)
-ctx.stroke()
-console.log(c)
 
-  }
 function addBlock(type, subtype){
   //Backend
   var prototype = [type, subtype, []]
@@ -105,17 +103,18 @@ down = false
   console.log(document.getElementById(String(added) + "o"), String(added) + "o")
   document.getElementById(String(added) + "o").addEventListener('mouseup', function(){
     if(control){
-      alert(box.id + " connected to " + this.parentElement.id)
+      state(box.id + " connected to " + this.parentElement.id)
       }
   })
   document.getElementById(String(added) + "i").addEventListener('mouseup', function(){
     if(control){
-      alert(box.parentElement.id + " connected to " + this.parentElement.id)
+      state(box.parentElement.id + " connected to " + this.parentElement.id)
       }
   })
   box.addEventListener('mousedown', function(event){
     if(!control){
 box = this
+
 console.log(box.id)
       firsty = (event.clientY)-(box.style.top.split('p')[0])
       firstx = (event.clientX)-(box.style.left.split('p')[0])
@@ -126,10 +125,12 @@ console.log(box.id)
     down = true
   })
   document.getElementById(tab + 'i').addEventListener('click', function(event){
+    on = [false, this.parentElement.id]
   control = true
   console.log('e')
     })
     document.getElementById(tab + 'o').addEventListener('click', function(event){
+      on = [true, this.parentElement.id]
       control = true
       console.log('e')
         })
